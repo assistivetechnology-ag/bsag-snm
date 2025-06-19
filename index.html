@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berlinger SN Handler - Complete Wireframes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .screen {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            background: #0078d4;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .header h2 {
+            font-size: 20px;
+            font-weight: 500;
+        }
+        
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .content {
+            padding: 20px;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #495057;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #0078d4;
+            box-shadow: 0 0 0 2px rgba(0, 120, 212, 0.2);
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+        
+        .btn-primary {
+            background: #0078d4;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #106ebe;
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+        
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .btn-warning {
+            background: #ffc107;
+            color: #212529;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 5px;
+        }
+        
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            font-weight: normal;
+        }
+        
+        .radio-group input[type="radio"] {
+            margin-right: 5px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 5px;
+        }
+        
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            font-weight: normal;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        
+        .preview-box {
+            background: white;
+            border: 2px dashed #dee2e6;
+            padding: 20px;
+            border-radius: 4px;
+            text-align: center;
+            font-family: monospace;
+            font-size: 18px;
+            color: #495057;
+        }
+        
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        
+        .table th,
+        .table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            font-size: 14px;
+            color: #495057;
+        }
+        
+        .table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .table-checkbox {
+            width: 40px;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .status-active {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-blocked {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-verified {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: #28a745;
+            width: 0%;
+            transition: width 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .dashboard-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .dashboard-card {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .dashboard-card h3 {
+            font-size: 14px;
+            color: #6c757d;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .dashboard-card .value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #0078d4;
+        }
+        
+        .dashboard-card.danger .value {
+            color: #dc3545;
+        }
+        
+        .dashboard-card.success .value {
+            color: #28a745;
+        }
+        
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+        
+        .quick-action-btn {
+            padding: 15px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            color: #333;
+        }
+        
+        .quick-action-btn:hover {
+            background: #e9ecef;
+            border-color: #0078d4;
+        }
+        
+        .icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .scan-area {
+            background: #f8f9fa;
+            border: 2px solid #0078d4;
+            border-radius: 6px;
+            padding: 30px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .scan-input {
+            font-size: 18px;
+            padding: 12px;
+            width: 300px;
+            max-width: 100%;
+            margin-bottom: 15px;
+        }
+        
+        .scan-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        
+        .label-preview {
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 20px;
+            background: white;
+            margin: 20px 0;
+            font-family: monospace;
+        }
+        
+        .barcode {
+            background: repeating-linear-gradient(90deg, #000 0px, #000 2px, #fff 2px, #fff 4px);
+            height: 50px;
+            margin: 10px 0;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            border-bottom: 1px solid #dee2e6;
+            margin-bottom: 20px;
+        }
+        
+        .nav-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        
+        .nav-tab:hover {
+            background: #f8f9fa;
+        }
+        
+        .nav-tab.active {
+            border-bottom-color: #0078d4;
+            color: #0078d4;
+            font-weight: 600;
+        }
+        
+        .alert {
+            padding: 12px 16px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        
+        .alert-info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .alert-warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+        }
+        
+        .alert-danger {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .metric-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+        }
+        
+        .metric-label {
+            font-size: 14px;
+            color: #6c757d;
+        }
+        
+        .metric-value {
+            font-size: 20px;
+            font-weight: 600;
+            color: #0078d4;
+        }
+        
+        .verification-result {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .verification-icon {
+            font-size: 20px;
+        }
+        
+        .portal-header {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .integration-card {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .integration-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .status-indicator.connected {
+            background: #28a745;
+        }
+        
+        .status-indicator.disconnected {
+            background: #dc3545;
+        }
+        
+        .status-indicator.warning {
+            background: #ffc107;
+        }
+        
+        @media (max-width: 768px) {
+            .dashboard-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .quick-actions {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .btn-group {
+                flex-wrap: wrap;
+            }
+            
+            .radio-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center; margin-bottom: 40px; color: #0078d4;">Berlinger SN Handler - Complete UI Wireframes</h1>
+        
+        <!-- Screen 1: Dashboard -->
+        <div class="screen">
+            <div class="header">
+                <h2>🏠 Dashboard</h2>
+                <div class="header-actions">
+                    <span>🔔</span>
+                    <span>User: Admin</span>
+                    <button class="btn btn-secondary" style="background: transparent; border: 1px solid white;">Logout</button>
+                </div>
+            </div>
+            <div class="content">
+                <div class="dashboard-cards">
+                    <div class="dashboard-card">
+                        <h3>Active Serial Numbers</h3>
+                        <div class="value">12,456</div>
+                    </div>
+                    <div class="dashboard-card danger">
+                        <h3>Blocked Serial Numbers</h3>
+                        <div class="value">234</div>
+                    </div>
+                    <div class="dashboard-card success">
+                        <h3>Today's Production</h3>
+                        <div class="value">1,250</div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">Quick Actions</div>
+                    <div class="quick-actions">
+                        <a href="#generate" class="quick-action-btn">
+                            <div class="icon">➕</div>
+                            <div>Generate Serial Numbers</div>
+                        </a>
+                        <a href="#configure" class="quick-action-btn">
+                            <div class="icon">⚙️</div>
+                            <div>Configure</div>
+                        </a>
+                        <a href="#pack" class="quick-action-btn">
+                            <div class="icon">📦</div>
+                            <div>Pack Items</div>
+                        </a>
+                        <a href="#search" class="quick-action-btn">
+                            <div class="icon">🔍</div>
+                            <div>Search Serial Numbers</div>
+                        </a>
+                        <a href="#reports" class="quick-action-btn">
+                            <div class="icon">📊</div>
+                            <div>Reports</div>
+                        </a>
+                        <a href="#deliveries" class="quick-action-btn">
+                            <div class="icon">🚚</div>
+                            <div>Deliveries</div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">Recent Activities</div>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 8px 0; border-bottom: 1px solid #e9ecef;">
+                            <strong>10:32</strong> - Generated 100 SNs for Order #12345
+                        </li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #e9ecef;">
+                            <strong>10:15</strong> - Blocked SN Range AA1000-AA1050 (Quality Issue)
+                        </li>
+                        <li style="padding: 8px 0;">
+                            <strong>09:45</strong> - Packed 50 items into HU-2024-001
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Screen 2: Serial Number Configuration (MUST) -->
+        <div class="screen" id="configure">
+            <div class="header">
+                <h2>⚙️ Serial Number Configuration</h2>
+                <div class="header-actions">
+                    <button class="btn btn-secondary" style="background: transparent; border: 1px solid white;">← Back</button>
+                </div>
+            </div>
+            <div class="content">
+                <div class="section">
+                    <div class="section-title">Article/Product Selection</div>
+                    <div class="form-group">
+                        <label>Article:</label>
+                        <select class="form-control">
+                            <option>Select Article...</option>
+                            <option>Medical Device XY</option>
+                            <option>Surgical Instrument AB</option>
+                            <option>Diagnostic Kit CD</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Article Group:</label>
+                        <select class="form-control">
+                            <option>All Groups</option>
+                            <option>Medical Devices</option>
+                            <option>Surgical Instruments</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">Serial Number Range Configuration</div>
+                    <div class="form-group">
+                        <label>Range Name:</label>
+                        <input type="text" class="form-control" placeholder="e.g., STANDARD-2024">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Format Type:</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="format" checked> Numeric</label>
+                            <label><input type="radio" name="format"> Alphanumeric</label>
+                        </div>
+                    </div>
+                    
+                    <div class="section" style="background: white; border: 1px solid #0078d4;">
+                        <div class="section-title">Structure Builder</div>
+                        <div style="text-align: center; margin-bottom: 20px; font-size: 16px; color: #6c757d;">
+                            [Prefix] + [Serial Number] + [Suffix] + [Checksum]
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                            <div class="form-group">
+                                <label>Prefix (optional):</label>
+                                <input type="text" class="form-control" placeholder="e.g., BER" value="BER">
+                            </div>
+                            <div class="form-group">
+                                <label>Length:</label>
+                                <select class="form-control">
+                                    <option>7 characters</option>
+                                    <option>8 characters</option>
+                                    <option>11 characters</option>
+                                    <option selected>12 characters</option>
+                                    <option>15 characters</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Suffix (optional):</label>
+                                <input type="text" class="form-control" placeholder="e.g., 2024" value="2024">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" checked> Include ISO 7064 MOD 37-36 Checksum
+                            </label>
+                        </div>
+                        
+                        <div class="preview-box">
+                            Preview: BER-000000000123-2024-X
+                        </div>
+                    </div>
+                    
+                    <div class="form-group" style="margin-top: 20px;">
+                        <label>For Alphanumeric:</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" checked> Uppercase</label>
+                            <label><input type="checkbox"> Lowercase</label>
+                            <label><input type="checkbox"> Special Characters (-, _, /)</label>
+                        </div>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div class="form-group">
+                            <label>Starting Number:</label>
+                            <input type="text" class="form-control" value="000000000001">
+                        </div>
+                        <div class="form-group">
+                            <label>End Number:</label>
+                            <input type="text" class="form-control" value="999999999999">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">Existing Ranges for Selected Article</div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Range Name</th>
+                                <th>Type</th>
+                                <th>Format</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>STANDARD-2024</td>
+                                <td>Numeric</td>
+                                <td>XXX-######-YYYY</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                                <td><button class="btn btn-primary" style="padding: 4px 12px; font-size: 12px;">Edit</button></td>
+                            </tr>
+                            <tr>
+                                <td>EXPORT-EU</td>
+                                <td>Alphanumeric</td>
+                                <td>EU-AAAAAA-##</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                                <td><button class="btn btn-primary" style="padding: 4px 12px; font-size: 12px;">Edit</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="btn-group">
+                    <button class="btn btn-primary">Save Configuration</button>
+                    <button class="btn btn-secondary">Test Generator</button>
+                    <button class="btn btn-secondary">Cancel</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Screen 3: Serial Number Generation (MUST) -->
+        <div class="screen" id="generate">
+            <div class="header">
+                <h2>➕ Generate Serial Numbers</h2>
+                <div class="header-actions">
+                    <button class="btn btn-secondary" style="background: transparent; border: 1px solid white;">← Back</button>
+                </div>
+            </div>
+            <div class="content">
+                <div class="section">
+                    <div class="section-title">Order Information</div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                        <div class="form-group">
+                            <label>Production Order:</label>
+                            <input type="text" class="form-control" placeholder="Enter order number">
+                        </div>
+                        <div class="form-group">
+                            <label>Customer Order:</label>
+                            <input type="text" class="form-control" placeholder="Customer reference">
+                        </div>
+                        <div class="form-group">
+                            <label>Article:</label>
+                            <select class="form-control">
+                                <option>Select Article...</option>
+                                <option>Medical Device XY</option>
+                                <option>Surgical Instrument AB</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Quantity:</label>
+                            <input type="number" class="form-control" value="50">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">Serial Number Range Selection</div>
+                    <div class="radio-group" style="flex-direction: column; gap: 10px;">
+                        <label style="padding: 10px; border: 1px solid #dee2e6; border-radius: 4px;">
+                            <input type="radio" name="range"> STANDARD-2024 (Next: BER-000001234-2024)
+                        </label>
+                        <label style="padding: 10px; border: 1px solid #0078d4; border-radius: 4px; background: #f0f8ff;">
+                            <input type="radio" name="range" checked> EXPORT-EU (Next: EU-ABC123-01)
+                        </label>
+                        <label style="padding: 10px; border: 1px solid #dee2e6; border-radius: 4px;">
+                            <input type="radio" name="range"> CUSTOM-RANGE (Next: CUST-000567)
+                        </label>
+                    </div>
+                    <div class="form-group" style="margin-top: 15px;">
+                        <label>
+                            <input type="checkbox"> Generate multiple ranges for this order
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">Generation Preview</div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center;">
+                        <div>
+                            <div style="font-size: 12px; color: #6c757d; margin-bottom: 5px;">First SN:</div>
+                            <div style="font-family: monospace; font-size: 16px;">EU-ABC123-01</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 12px; color: #6c757d; margin-bottom: 5px;">Last SN:</div>
+                            <div style="font-family: monospace; font-size: 16px;">EU-ABC172-50</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 12px; color: #6c757d; margin-bottom: 5px;">Total:</div>
+                            <div style="font-size: 16px; font-weight: 600;">50 serial numbers</div>
+                        </div>
+                    </div>
+                    <div class="alert alert-info" style="margin-top: 20px;">
+                        ⏱ Estimated time: &lt; 3 seconds
+                    </div>
+                </div>
+                
+                <div class="btn-group">
+                    <button class="btn btn-primary" onclick="simulateGeneration()">Generate</button>
+                    <button class="btn btn-success">Generate & Print Labels</button>
+                    <button class="btn btn-secondary">Cancel</button>
+                </div>
+                
+                <div class="section" id="generationProgress" style="display: none;">
+                    <div class="section-title">Generation Progress</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill">0%</div>
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <div>✓ Checksum validation passed</div>
+                        <div>✓ Saved to ERP system</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Screen 4: Serial Number Status Management -->
+        <div class="screen" id="status">
+            <div class="header">
+                <h2>🔒 Serial Number Status Management</h2>
+                <div class="header-actions">
+                    <button class="btn btn-secondary" style="background: transparent; border: 1px solid white;">← Back</button>
+                </div>
+            </div>
+            <div class="content">
+                <div class="section">
+                    <div class="section-title">Search Serial Numbers</div>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <input type="text" class="form-control" style="flex: 1; min-width: 300px;" placeholder="Search by SN, range, article, order...">
+                        <select class="form-control" style="width: 150px;">
+                            <option>All Status</option>
+                            <option>Active</option>
+                            <option>Blocked</option>
+                            <option>In Production</option>
+                        </select>
+                        <input type="date" class="form-control" style="width: 150px;">
+                        <input type="date" class="form-control" style="width: 150px;">
+                        <button class="btn btn-primary">Apply Filters</button>
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <button class="btn btn-danger">Block Selected</button>
+                    <button class="btn btn-success">Unblock Selected</button>
+                    <button class="btn btn-secondary">Export</button>
+                </div>
+                
+                <div class="section">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="table-checkbox"><input type="checkbox"></th>
+                                <th>Serial Number</th>
+                                <th>Article</th>
+                                <th>Status</th>
+                                <th>Order</th>
+                                <th>Created Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td style="font-family: monospace;">BER-000001234-24</td>
+                                <td>ART-12345</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                                <td>ORD-9876</td>
+                                <td>2024-06-19</td>
+                                <td><button class="btn btn-warning" style="padding: 4px 12px; font-size: 12px;">Block</button></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td style="font-family: monospace;">BER-000001235-24</td>
+                                <td>ART-12345</td>
+                                <td><span class="status-badge status-blocked">Blocked</span></td>
+                                <td>ORD-9876</td>
+                                <td>2024-06-19</td>
+                                <td><button class="btn btn-success" style="padding: 4px 12px; font-size: 12px;">Unblock</button></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td style="font-family: monospace;">BER-000001236-24</td>
+                                <td>ART-12345</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                                <td>ORD-9876</td>
+                                <td>2024-06-19</td>
+                                <td><button class="btn btn-warning" style="padding: 4px 12px; font-size: 12px;">Block</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">Block Serial Numbers</div>
+                    <div class="form-group">
+                        <label>Reason:</label>
+                        <select class="form-control">
+                            <option>Quality Issue</option>
+                            <option>Customer Return</option>
+                            <option>Damaged Product</option>
+                            <option>Recall</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Comments:</label>
+                        <textarea class="form-control" rows="3" placeholder="Enter additional details..."></textarea>
+                    </div>
+                    <button class="btn btn-danger">Block Selected Serial Numbers</button>
+                    <div class="alert alert-info" style="margin-top: 10px;">
+                        ℹ️ Blocking will automatically update the ERP system and prevent these items from being shipped.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Screen 5: Production & Packing -->
+        <div class="screen" id="pack">
+            <div class="header">
+                <h2>📦 Production & Packing</h2>
+                <div class="header-actions">
+                    <span>Station: PACK-01</span>
+                    <button class="btn btn-secondary" style="background: transparent; border: 1px solid white;">← Back</button>
+                </div>
+            </div>
+            <div class="content">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="section">
+                        <div class="section-title">Current Order</div>
+                        <div><strong>Order:</strong> ORD-12345</div>
+                        <div><strong>Article:</strong> Medical Device XY</div>
+                        <div><strong>Quantity:</strong> 50/100</div>
+                        <div><strong>Customer:</strong> Hospital ABC</div>
+                        <div style="margin-top: 15px;">
+                            <strong>Packaging Spec:</strong>
+                            <ul style="margin-top: 5px; padding-left: 20px;">
+                                <li>Primary: 10 units/box</li>
+                                <li>Secondary: 5 boxes/carton</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="section">
+                        <div class="section-title">Scan/Entry</div>
+                        <div class="scan-area">
+                            <input type="text" class="scan-input form-control" placeholder="Scan or enter serial number" autofocus>
+                            <div class="scan-buttons">
+                                <button class="btn btn-primary">📷 Scan Barcode</button>
+                                <button class="btn btn-secondary">📡 Read RFID</button>
+                            </div>
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <strong>Last Scanned:</strong>
+                            <div style="color: #28a745; margin-top: 5px;">
+                                ✓ BER-000001234-24<br>
+                                ✓ BER-000001235-24
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">Current Handling Unit</div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px;">
+                        <div><strong>HU ID:</strong> HU-2024-001234</div>
+                        <div><strong>Type:</strong> Small Box</div>
+                        <div><strong>Status:</strong> <span class="status-badge status-pending">Open</span></div>
+                    </div>
+                    
+                    <div>
+                        <strong>Contents (8/10):</strong>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin-top: 10px;">
+                            <div class="status-badge status-active">BER-000001234-24</div>
+                            <div class="status-badge status-active">BER-000001235-24</div>
+                            <div class="status-badge status-active">BER-000001236-24</div>
+                            <div class="status-badge status-active">BER-000001237-24</div>
+                            <div class="status-badge status-active">BER-000001238-24</div>
+                            <div class="status-badge status-active">BER-000001239-24</div>
+                            <div class="status-badge status-active">BER-000001240-24</div>
+                            <div class="status-badge status-active">BER-000001241-24</div>
+                            <div style="border: 2px dashed #dee2e6; padding: 4px 8px; border-radius: 4px; text-align: center;">+</div>
+                            <div style="border: 2px dashed #dee2e6; padding: 4px 8px; border-radius: 4px; text-align: center;">+</div>
+                        </div>
+                    </div>
+                    
+                    <div class="btn-group" style="margin-top: 20px;">
+                        <button class="btn btn-success">Complete HU</button>
+                        <button class="btn btn-primary">Print HU Label</button>
+                        <button class="btn btn-danger">Cancel HU</button>
+                    </div>
+                </div>
+                
+                <div class="btn-group">
+                    <button class="btn btn-secondary">Repack Items</button>
+                    <button class="btn btn-secondary">Change Packaging</button>
+                    <button class="btn btn-secondary">View Packed HUs</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Screen 6: Label Printing -->
+        <div class="screen">
+            <div class="header">
+                <h2>🏷️ Label Printing</h2>
+                <div class="header-actions">
+                    <button class="btn btn-secondary" style="background: transparent; border: 1px solid white;">← Back</button>
+                </div>
+            </div>
+            <div class="content">
+                <div class="section">
+                    <div class="section-title">Label Type Selection</div>
+                    <div class="radio-group" style="flex-direction: column;">
+                        <label><input type="radio" name="labeltype" checked> Product Label (GS1-128)</label>
+                        <label><input type="radio" name="labeltype"> Handling Unit Label</label>
+                        <label><input type="radio" name="labeltype"> Transport Label</label>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">Label Preview</div>
+                    <div class="label-preview">
+                        <div style="font-weight: bold; font-size: 18px; margin-bottom: 10px;">BERLINGER AG</div>
+                        <div class="barcode"></div>
+                        <div style="margin-top: 10px;">
+                            <div>(01)07612345000012</div>
+                            <div style="font-weight: bold;">(21)BER-000001234-24</div>
+                            <div>(10)LOT2024061901</div>
+                            <div>(17)250630</div>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <div style="font-weight: bold;">Medical Device XY</div>
+                            <div style="color: #28a745;">Quality: PASSED</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">Print Settings</div>
+                    <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+                        <div class="form-group" style="margin: 0;">
+                            <label>Printer:</label>
+                            <select class="form-control">
+                                <option>ZEBRA-01</option>
+                                <option>ZEBRA-02</option>
+                                <option>DYMO-01</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="margin: 0;">
+                            <label>Copies:</label>
+                            <input type="number" class="form-control" value="1" style="width: 80px;">
+                        </div>
+                        <div class="form-group" style="margin: 0;">
+                            <label>
+                                <input type="checkbox"> Auto-print on scan
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="btn-group">
+                    <button class="btn btn-primary">Print</button>
+                    <button class="btn btn-secondary">Print Test</button>
+                    <button class="btn btn-secondary">Configure Template</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Screen 7: Quality Control -->
+        <div class="screen" id="quality">
+            <div class="header">
+                <h2>✅ Quality Control - Serial Number Verification</h2>
+                <div class="header-actions">
+                    <button class="btn btn-secondary" style="background: transparent; border: 1px solid white;">← Back</button>
+                </div>
+            </div>
+            <div class="content">
+                <div class="section">
+                    <div class="section-title">Assembly Protocol Verification</div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                        <div class="form-group">
+                            <label>Protocol ID:</label>
+                            <input type="text" class="form-control" placeholder="Enter or scan protocol ID">
+                        </div>
+                        <div class="form-group">
+                            <label>Article:</label>
+                            <select class="form-control">
+                                <option>Medical Device XY</option>
+                                <option>Surgical Instrument AB</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Expected SNs:</label>
+                            <input type="number" class="form-control" value="25" readonly>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">Verification Method</div>
+                    <div class="btn-group">
+                        <button class="btn btn-primary">🔦 Laser Scanner</button>
+                        <button class="btn btn-secondary">📱 QR Code Reader</button>
+                        <button class="btn btn-secondary">⌨️ Manual Entry</button>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">Verification Results</div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Serial Number</th>
+                                <th>Expected</th>
+                                <th>Found</th>
+                                <th>Status</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-family: monospace;">BER-000001234-24</td>
+                                <td style="text-align: center;">✓</td>
+                                <td style="text-align: center;">✓</td>
+                                <td><span class="status-badge status-verified">✅ Verified</span></td>
+                                <td>Laser engraving correct</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: monospace;">BER-000001235-24</td>
+                                <td style="text-align: center;">✓</td>
+                                <td style="text-align: center;">✓</td>
+                                <td><span class="status-badge status-verified">✅ Verified</span></td>
+                                <td>QR code readable</td>
+                            </tr>
+                            <tr style="background: #fff3cd;">
+                                <td style="font-family: monospace;">BER-000001236-24</td>
+                                <td style="text-align: center;">✓</td>
+                                <td style="text-align: center;">✗</td>
+                                <td><span class="status-badge status-pending">⚠️ Not Found</span></td>
+                                <td>Missing from assembly</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: monospace;">BER-000001237-24</td>
+                                <td style="text-align: center;">✓</td>
+                                <td style="text-align: center;">✓</td>
+                                <td><span class="status-badge status-verified">✅ Verified</span></td>
+                                <td>Position correct</td>
+                            </tr>
+                            <tr style="background: #f8d7da;">
+                                <td style="font-family: monospace;">BER-000001299-24</td>
+                                <td style="text-align: center;">✗</td>
+                                <td style="text-align: center;">✓</td>
+                                <td><span class="status-badge status-blocked">❌ Unexpected</span></td>
+                                <td>Not in assembly list</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="alert alert-warning">
+                        <strong>Summary:</strong> 23/25 Verified | 1 Missing | 1 Unexpected
+                    </div>
+                </div>
+                
+                <div class="btn-group">
+                    <button class="btn btn-success">Complete Verification</button>
+                    <button class="btn btn-warning">Flag Issues</button>
+                    <button class="btn btn-secondary">Export Report</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Screen 8: Traceability Search -->
+        <div class="screen">
+            <div class="header">
+                <h2>🔍 Serial Number Traceability</h2>
+                <div class="header-actions">
+                    <button class="btn btn-secondary" style="background: transparent; border: 1px solid white;">← Back</button>
+                </div>
+            </div>
+            <div class="content">
+                <div class="section">
+                    <input type="text" class="form-control" placeholder="Enter serial number, order, article..." style="font-size: 16px; padding: 12px;">
+                </div>
+                
+                <div class="alert alert-success">
+                    Serial Number: <strong>BER-000001234-24</strong>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px;">
+                    <div>
+                        <div class="section">
+                            <div class="section-title">Product Info</div>
+                            <div><strong>Article:</strong> Medical Device XY</div>
+                            <div><strong>Batch:</strong> LOT20240619</div>
+                            <div><strong>Status:</strong> <span class="status-badge status-active">Active</span></div>
+                            <div><strong>Order:</strong> ORD-12345</div>
+                            <div><strong>Customer:</strong> Hospital A</div>
+                        </div>
+                        
+                        <div class="section">
+                            <div class="section-title">Set Assembly</div>
+                            <div><strong>Part of Set:</strong> S-9999</div>
+                            <div style="margin-top: 10px;"><strong>Components:</strong></div>
+                            <ul style="margin-top: 5px; padding-left: 20px;">
+                                <li>Component A: 2234</li>
+                                <li>Component B: 3345</li>
+                                <li>Component C: 4456</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="section">
+                        <div class="section-title">Timeline</div>
+                        <div style="position: relative; padding-left: 30px;">
+                            <div style="position: absolute; left: 10px; top: 0; bottom: 0; width: 2px; background: #dee2e6;"></div>
+                            <div style="margin-bottom: 20px; position: relative;">
+                                <div style="position: absolute; left: -24px; width: 10px; height: 10px; background: #28a745; border-radius: 50%;"></div>
+                                <div style="font-size: 12px; color: #6c757d;">2024-06-19 10:15</div>
+                                <div>Generated</div>
+                            </div>
+                            <div style="margin-bottom: 20px; position: relative;">
+                                <div style="position: absolute; left: -24px; width: 10px; height: 10px; background: #28a745; border-radius: 50%;"></div>
+                                <div style="font-size: 12px; color: #6c757d;">2024-06-19 11:30</div>
+                                <div>Quality Check Passed</div>
+                            </div>
+                            <div style="margin-bottom: 20px; position: relative;">
+                                <div style="position: absolute; left: -24px; width: 10px; height: 10px; background: #28a745; border-radius: 50%;"></div>
+                                <div style="font-size: 12px; color: #6c757d;">2024-06-19 14:00</div>
+                                <div>Packed in HU-2024-001</div>
+                            </div>
+                            <div style="margin-bottom: 20px; position: relative;">
+                                <div style="position: absolute; left: -24px; width: 10px; height: 10px; background: #28a745; border-radius: 50%;"></div>
+                                <div style="font-size: 12px; color: #6c757d;">2024-06-19 16:45</div>
+                                <div>Added to Delivery D-5678</div>
+                            </div>
+                            <div style="position: relative;">
+                                <div style="position: absolute; left: -24px; width: 10px; height: 10px; background: #28a745; border-radius: 50%;"></div>
+                                <div style="font-size: 12px; color: #6c757d;">2024-06-20 09:00</div>
+                                <div>Shipped</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">Supply Chain Visualization</div>
+                    <div style="display: flex; align-items: center; justify-content: space-between; padding: 20px; background: white; border-radius: 4px;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 24px;">🏭</div>
+                            <div style="font-size: 12px;">Production</div>
+                            <div style="color: #28a745;">✓</div>
+                        </div>
+                        <div style="flex: 1; height: 2px; background: #28a745; margin: 0 10px;"></div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 24px;">✅</div>
+                            <div style="font-size: 12px;">QC</div>
+                            <div style="color: #28a745;">✓</div>
+                        </div>
+                        <div style="flex: 1; height: 2px; background: #28a745; margin: 0 10px;"></div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 24px;">📦</div>
+                            <div style="font-size: 12px;">Packing</div>
+                            <div style="color: #28a745;">✓</div>
+                        </div>
+                        <div style="flex: 1; height: 2px; background: #28a745; margin: 0 10px;"></div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 24px;">🏢</div>
+                            <div style="font-size: 12px;">Warehouse</div>
+                            <div style="color: #28a745;">✓</div>
+                        </div>
+                        <div style="flex: 1; height: 2px; background: #28a745; margin: 0 10px;"></div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 24px;">🚚</div>
+                            <div style="font-size: 12px;">Delivery</div>
+                            <div style="color: #28a745;">✓</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="btn-group">
+                    <button class="btn btn-primary">Export PDF</button>
+                    <button class="btn btn-secondary">Export Excel</button>
+                    <button class="btn btn-secondary">Send to ERP</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Screen 9: Customer Portal -->
+        <div class="screen" id="portal">
+            <div class="portal-header">
+                <h2>Berlinger Customer Portal</h2>
+                <div>Welcome, <strong>Hospital ABC</strong></div>
+            </div>
+            <div class="content">
+                <div class="section">
+                    <div class="section-title">Your Deliveries</div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Delivery</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Serial Numbers</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>D-5678</td>
+                                <td>2024-06-20</td>
+                                <td><span class="status-badge status-active">Delivered</span></td>
+                                <td><button class="btn btn-primary" style="padding: 4px 12px; font-size: 12px;">View (50) ▼</button></td>
+                            </tr>
+                            <tr>
+                                <td>D-5677</td>
+                                <td>2024-06-18</td>
+                                <td><span class="status-badge status-active">Delivered</span></td>
+                                <td><button class="btn btn-primary" style="padding: 4px 12px; font-size: 12px;">View (25) ▼</button></td>
+                            </tr>
+                            <tr>
+                                <td>D-5679</td>
+                                <td>2024-06-22</td>
+                                <td><span class="status-badge status-pending">In Transit</span></td>
+                                <td><button class="btn btn-primary" style="padding: 4px 12px; font-size: 12px;">View (100) ▼</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">Serial Numbers for Delivery D-5678</div>
+                    <div style="margin-bottom: 15px;">
+                        <label><input type="checkbox"> Select All</label>
+                        <button class="btn btn-primary">Export Selected</button>
+                        <button class="btn btn-secondary">Download All</button>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="table-checkbox"><input type="checkbox"></th>
+                                <th>Serial Number</th>
+                                <th>Product</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td style="font-family: monospace;">BER-000001234-24</td>
+                                <td>Medical Device XY</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td style="font-family: monospace;">BER-000001235-24</td>
+                                <td>Medical Device XY</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td style="font-family: monospace;">BER-000001236-24</td>
+                                <td>Medical Device XY</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">Integration Options</div>
+                    <div class="btn-group">
+                        <button class="btn btn-primary">Download CSV</button>
+                        <button class="btn btn-secondary">API Access</button>
+                        <button class="btn btn-secondary">Integration Guide</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Screen 10: System Configuration & Integration -->
+        <div class="screen" id="integration">
+            <div class="header">
+                <h2>⚙️ System Configuration & Integration</h2>
+                <div class="header-actions">
+                    <button class="btn btn-secondary" style="background: transparent; border: 1px solid white;">← Back</button>
+                </div>
+            </div>
+            <div class="content">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <div class="section">
+                            <div class="section-title">External Systems</div>
+                            
+                            <div class="integration-card">
+                                <h4>ERP Integration (Navision 2018)</h4>
+                                <div class="integration-status">
+                                    <div class="status-indicator connected"></div>
+                                    <span style="color: #28a745;">Connected</span>
+                                </div>
+                                <div style="margin-top: 10px; font-size: 14px; color: #6c757d;">
+                                    Last Sync: 2024-06-19 15:30
+                                </div>
+                                <div class="btn-group" style="margin-top: 15px;">
+                                    <button class="btn btn-primary">Test Connection</button>
+                                    <button class="btn btn-secondary">Sync Now</button>
+                                </div>
+                            </div>
+                            
+                            <div class="integration-card">
+                                <h4>Labeling System (Nice Label)</h4>
+                                <div class="integration-status">
+                                    <div class="status-indicator connected"></div>
+                                    <span style="color: #28a745;">Connected</span>
+                                </div>
+                                <div class="btn-group" style="margin-top: 15px;">
+                                    <button class="btn btn-primary">Configure</button>
+                                    <button class="btn btn-secondary">Test Print</button>
+                                </div>
+                            </div>
+                            
+                            <div class="integration-card">
+                                <h4>BDE/MES System</h4>
+                                <div class="integration-status">
+                                    <div class="status-indicator warning"></div>
+                                    <span style="color: #ffc107;">Not Configured</span>
+                                </div>
+                                <button class="btn btn-warning" style="margin-top: 15px;">Setup Integration</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="section">
+                            <div class="section-title">Performance Metrics</div>
+                            <div class="metric-box">
+                                <div>
+                                    <div class="metric-label">Response Time Target:</div>
+                                    <div class="metric-value">3 seconds</div>
+                                </div>
+                            </div>
+                            <div class="metric-box" style="margin-top: 10px;">
+                                <div>
+                                    <div class="metric-label">Current Average:</div>
+                                    <div class="metric-value" style="color: #28a745;">1.2s ✅</div>
+                                </div>
+                            </div>
+                            <div class="metric-box" style="margin-top: 10px;">
+                                <div>
+                                    <div class="metric-label">Concurrent Users:</div>
+                                    <div class="metric-value">15/100</div>
+                                </div>
+                            </div>
+                            <div class="metric-box" style="margin-top: 10px;">
+                                <div>
+                                    <div class="metric-label">Queue Status:</div>
+                                    <div style="font-size: 14px;">Processing: 0 | Waiting: 0</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="section">
+                            <div class="section-title">API Configuration</div>
+                            <div class="form-group">
+                                <label>Endpoint:</label>
+                                <input type="text" class="form-control" value="https://api.berlinger.com/sn-handler/v1" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>API Key:</label>
+                                <div style="display: flex; gap: 10px;">
+                                    <input type="text" class="form-control" value="****************************3a2f" readonly>
+                                    <button class="btn btn-warning">Regenerate</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Rate Limit:</label>
+                                <input type="text" class="form-control" value="1000 requests/hour" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">System Logs</div>
+                    <div style="background: #f8f9fa; padding: 10px; border-radius: 4px; font-family: monospace; font-size: 12px; max-height: 200px; overflow-y: auto;">
+                        <div>[2024-06-19 16:45:23] INFO: Serial number generation completed - 50 SNs in 1.2s</div>
+                        <div>[2024-06-19 16:44:10] INFO: ERP sync successful - 125 records updated</div>
+                        <div>[2024-06-19 16:30:45] WARNING: Label printer ZEBRA-02 offline</div>
+                        <div>[2024-06-19 16:15:00] INFO: User login: admin@berlinger.com</div>
+                        <div>[2024-06-19 16:00:00] INFO: System backup completed successfully</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation Menu -->
+        <div style="position: fixed; bottom: 20px; right: 20px; background: white; border: 1px solid #ddd; border-radius: 8px; padding: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <h4 style="margin-bottom: 10px; font-size: 16px;">Quick Navigation</h4>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <li style="margin-bottom: 5px;"><a href="#top" style="color: #0078d4; text-decoration: none;">🏠 Dashboard</a></li>
+                <li style="margin-bottom: 5px;"><a href="#configure" style="color: #0078d4; text-decoration: none;">⚙️ Configuration</a></li>
+                <li style="margin-bottom: 5px;"><a href="#generate" style="color: #0078d4; text-decoration: none;">➕ Generate SNs</a></li>
+                <li style="margin-bottom: 5px;"><a href="#status" style="color: #0078d4; text-decoration: none;">🔒 Status Management</a></li>
+                <li style="margin-bottom: 5px;"><a href="#pack" style="color: #0078d4; text-decoration: none;">📦 Packing</a></li>
+                <li style="margin-bottom: 5px;"><a href="#quality" style="color: #0078d4; text-decoration: none;">✅ Quality Control</a></li>
+                <li style="margin-bottom: 5px;"><a href="#portal" style="color: #0078d4; text-decoration: none;">🌐 Customer Portal</a></li>
+                <li><a href="#integration" style="color: #0078d4; text-decoration: none;">🔧 Integration</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Simulate serial number generation
+        function simulateGeneration() {
+            const progressSection = document.getElementById('generationProgress');
+            const progressFill = document.getElementById('progressFill');
+            progressSection.style.display = 'block';
+            
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 10;
+                progressFill.style.width = progress + '%';
+                progressFill.textContent = progress + '%';
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        alert('✅ Serial numbers generated successfully!\n\n50 serial numbers created in 1.2 seconds.\nAll checksums validated.\nSynced with ERP system.');
+                    }, 500);
+                }
+            }, 120); // Total time: 1.2 seconds
+        }
+        
+        // Simulate barcode scanning
+        document.querySelectorAll('.scan-input').forEach(input => {
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    const value = this.value;
+                    if (value) {
+                        // Simulate successful scan
+                        const scanSound = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZizYG');
+                        scanSound.play().catch(() => {}); // Ignore if audio fails
+                        
+                        // Visual feedback
+                        this.style.borderColor = '#28a745';
+                        this.style.boxShadow = '0 0 0 3px rgba(40, 167, 69, 0.25)';
+                        
+                        setTimeout(() => {
+                            this.value = '';
+                            this.style.borderColor = '#ced4da';
+                            this.style.boxShadow = 'none';
+                        }, 1000);
+                    }
+                }
+            });
+        });
+        
+        // Add interactive hover effects to dashboard cards
+        document.querySelectorAll('.dashboard-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 4px 8px rgba(0,0,0,0.15)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
+            });
+        });
+        
+        // Simulate real-time updates
+        setInterval(() => {
+            // Update dashboard numbers
+            const activeCount = document.querySelector('.dashboard-card .value');
+            if (activeCount) {
+                const currentValue = parseInt(activeCount.textContent.replace(',', ''));
+                const newValue = currentValue + Math.floor(Math.random() * 5);
+                activeCount.textContent = newValue.toLocaleString();
+            }
+        }, 5000);
+        
+        // Form validation feedback
+        document.querySelectorAll('.form-control').forEach(input => {
+            input.addEventListener('blur', function() {
+                if (this.hasAttribute('required') && !this.value) {
+                    this.style.borderColor = '#dc3545';
+                } else if (this.value) {
+                    this.style.borderColor = '#28a745';
+                }
+            });
+        });
+        
+        // Print functionality
+        document.querySelectorAll('.btn').forEach(button => {
+            if (button.textContent.includes('Print')) {
+                button.addEventListener('click', function() {
+                    const printConfirm = confirm('Send to printer?');
+                    if (printConfirm) {
+                        setTimeout(() => {
+                            alert('✅ Print job sent successfully!');
+                        }, 1000);
+                    }
+                });
+            }
+        });
+        
+        // Export functionality
+        document.querySelectorAll('.btn').forEach(button => {
+            if (button.textContent.includes('Export')) {
+                button.addEventListener('click', function() {
+                    const format = prompt('Export format:\n1. PDF\n2. Excel\n3. CSV\n\nEnter number:', '1');
+                    if (format) {
+                        const formats = ['PDF', 'Excel', 'CSV'];
+                        const selectedFormat = formats[parseInt(format) - 1] || 'PDF';
+                        setTimeout(() => {
+                            alert(`✅ Export to ${selectedFormat} completed!\n\nFile: SerialNumbers_${new Date().toISOString().split('T')[0]}.${selectedFormat.toLowerCase()}`);
+                        }, 1000);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
